@@ -1,5 +1,9 @@
 # João Pedro — Portfólio
 
+[![Deploy](https://img.shields.io/badge/deploy-vercel-black?style=flat&logo=vercel)](https://odevjp.vercel.app/)
+ 
+🔗 **[odevjp.vercel.app](https://odevjp.vercel.app/)**
+
 Site pessoal para apresentar quem eu sou e os projetos que já desenvolvi.
 Construído como single-page application, com navegação entre a seção
 **Sobre** e **Projetos** por scroll suave, sem reload de página.
