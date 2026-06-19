@@ -21,7 +21,7 @@ export default function Footer() {
           className="text-sm"
           style={{ fontFamily: "'Inter', sans-serif", color: '#8892a4' }}
         >
-          Desenvolvido por João Pedro · 2025
+          Desenvolvido por João Pedro · 2026
         </p>
       </div>
     </footer>
