@@ -1,11 +1,11 @@
 export const projects = [
   {
     id: 1,
-    name: "LinguaFlow",
+    name: "Raiz Café",
     description:
-      "Landing page para escola de idiomas fictícia. Layout moderno com seções de cursos, depoimentos e CTA.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    url: "https://joaoepedro.github.io/linguaflow/",
+      "Landing page para venda de café artesanal. Design moderno e responsivo, com foco em experiência do usuário.",
+    stack: ["React", "Vite", "Tailwind CSS"],
+    url: "https://raizcafe.vercel.app/",
   },
   {
     id: 2,
