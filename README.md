@@ -2,7 +2,11 @@
 
 [![Deploy](https://img.shields.io/badge/deploy-vercel-black?style=flat&logo=vercel)](https://odevjp.vercel.app/)
  
-🔗 **[odevjp.vercel.app](https://odevjp.vercel.app/)**
+<p align="center">
+  <a href="https://odevjp.vercel.app/">
+    <img src="https://img.shields.io/badge/🔗_acessar_site-00f0ff?style=for-the-badge&logoColor=black&labelColor=0a0a0f" alt="Acessar site" />
+  </a>
+</p>
 
 Site pessoal para apresentar quem eu sou e os projetos que já desenvolvi.
 Construído como single-page application, com navegação entre a seção
