@@ -4,7 +4,7 @@
 
 Site pessoal de desenvolvedor web freelancer: serviços, projetos, processo de trabalho e contato.
 
-![Prévia do portfólio](public/og-image.jpg)
+![Portfólio no desktop e no celular](docs/capa.jpg)
 
 ## Seções
 
