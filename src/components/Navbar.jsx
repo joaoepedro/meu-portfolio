@@ -1,100 +1,98 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { links } from '../data/links';
+
+const items = [
+  { href: '#servicos', label: 'Serviços' },
+  { href: '#projetos', label: 'Projetos' },
+  { href: '#como-trabalho', label: 'Como trabalho' },
+  { href: '#sobre', label: 'Sobre' },
+];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // Esc fecha o menu do celular
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md"
-      style={{
-        backgroundColor: 'rgba(10, 10, 15, 0.9)',
-        borderBottom: scrolled ? '1px solid #1e2a3a' : '1px solid transparent',
-        transition: 'border-color 0.3s ease',
-      }}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled || open ? 'border-linha bg-creme/90 backdrop-blur-md' : 'border-transparent bg-transparent'
+      }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <button
-          onClick={() => scrollTo('sobre')}
-          className="font-bold text-lg tracking-tight cursor-pointer"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#00f0ff' }}
-        >
-          &lt;JP /&gt;
-        </button>
+      <nav aria-label="Principal" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        <a href="#topo" className="font-display text-xl font-semibold italic" onClick={() => setOpen(false)}>
+          João Pedro
+        </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          <NavLink onClick={() => scrollTo('sobre')}>Sobre</NavLink>
-          <NavLink onClick={() => scrollTo('projetos')}>Projetos</NavLink>
-        </div>
+        <ul className="hidden items-center gap-8 md:flex">
+          {items.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} className="text-sm text-suave transition-colors hover:text-tinta">
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#contato"
+              className="rounded-full bg-tinta px-4 py-2 text-sm font-medium text-creme transition-colors hover:bg-musgo"
+            >
+              Contato
+            </a>
+          </li>
+        </ul>
 
-        {/* Hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Abrir menu"
+          type="button"
+          className="-mr-2 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="menu-celular"
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
         >
-          <span
-            className="block w-6 h-0.5 transition-all duration-300"
-            style={{
-              backgroundColor: '#ffffff',
-              transform: menuOpen ? 'translateY(8px) rotate(45deg)' : 'none',
-            }}
-          />
-          <span
-            className="block w-6 h-0.5 transition-all duration-300"
-            style={{
-              backgroundColor: '#ffffff',
-              opacity: menuOpen ? 0 : 1,
-            }}
-          />
-          <span
-            className="block w-6 h-0.5 transition-all duration-300"
-            style={{
-              backgroundColor: '#ffffff',
-              transform: menuOpen ? 'translateY(-8px) rotate(-45deg)' : 'none',
-            }}
-          />
+          <span className={`block h-0.5 w-6 bg-tinta transition-transform duration-300 ${open ? 'translate-y-2 rotate-45' : ''}`} />
+          <span className={`block h-0.5 w-6 bg-tinta transition-opacity duration-300 ${open ? 'opacity-0' : ''}`} />
+          <span className={`block h-0.5 w-6 bg-tinta transition-transform duration-300 ${open ? '-translate-y-2 -rotate-45' : ''}`} />
         </button>
+      </nav>
+
+      <div id="menu-celular" hidden={!open} className="border-t border-linha px-6 pb-6 md:hidden">
+        <ul className="flex flex-col">
+          {[...items, { href: '#contato', label: 'Contato' }].map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block border-b border-linha py-4 font-display text-2xl"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={links.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 flex justify-center rounded-lg bg-tinta px-5 py-3.5 font-medium text-creme"
+        >
+          Falar no WhatsApp
+        </a>
       </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div
-          className="md:hidden px-6 pb-4 flex flex-col gap-4"
-          style={{ borderTop: '1px solid #1e2a3a' }}
-        >
-          <NavLink onClick={() => scrollTo('sobre')}>Sobre</NavLink>
-          <NavLink onClick={() => scrollTo('projetos')}>Projetos</NavLink>
-        </div>
-      )}
-    </nav>
-  );
-}
-
-function NavLink({ onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      className="text-sm font-medium cursor-pointer relative group"
-      style={{ color: '#8892a4', fontFamily: "'Inter', sans-serif" }}
-    >
-      {children}
-      <span
-        className="absolute -bottom-0.5 left-0 w-0 h-px group-hover:w-full transition-all duration-300"
-        style={{ backgroundColor: '#00f0ff' }}
-      />
-    </button>
+    </header>
   );
 }

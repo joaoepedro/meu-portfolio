@@ -1,32 +1,50 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Identidade visual — "Editorial quente"
+   Os tokens abaixo viram classes do Tailwind:
+   bg-creme, text-tinta, text-terracota, font-display...
+   ============================================================ */
+@theme {
+  --color-creme: #F4F0E8;        /* fundo principal */
+  --color-papel: #FBF9F4;        /* cards e superfícies */
+  --color-areia: #EAE3D6;        /* fundo alternativo de seção */
+  --color-linha: #DED6C6;        /* bordas e divisórias */
+  --color-tinta: #1B1A17;        /* texto principal e botão primário */
+  --color-suave: #55524B;        /* texto secundário (contraste 6.9:1) */
+  --color-terracota: #C2502D;    /* destaque em textos grandes */
+  --color-terracota-escuro: #A8431F; /* destaque em textos pequenos (5.3:1) */
+  --color-terracota-claro: #E07A55;  /* destaque sobre fundo escuro */
+  --color-musgo: #2F4A3A;        /* cor de apoio */
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Geist Variable", system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* compensa o menu fixo */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 body {
-  background-color: #0a0a0f;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--color-creme);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
+::selection {
+  background: var(--color-terracota);
+  color: #fff;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.cursor-blink {
-  display: inline-block;
-  width: 3px;
-  height: 1em;
-  background-color: #00f0ff;
-  margin-left: 4px;
-  vertical-align: middle;
-  animation: blink 1s step-end infinite;
+:focus-visible {
+  outline: 2px solid var(--color-terracota-escuro);
+  outline-offset: 3px;
+  border-radius: 4px;
 }

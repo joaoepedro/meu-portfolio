@@ -1,29 +1,34 @@
+import { MotionConfig } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Stack from './components/Stack';
+import Services from './components/Services';
 import Projects from './components/Projects';
+import Process from './components/Process';
+import About from './components/About';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div style={{ backgroundColor: '#0a0a0f', minHeight: '100vh' }}>
+    // reducedMotion="user": quem ativa "reduzir movimento" no sistema
+    // vê o conteúdo sem deslocamentos
+    <MotionConfig reducedMotion="user">
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:bg-tinta focus:px-4 focus:py-2 focus:text-creme"
+      >
+        Pular para o conteúdo
+      </a>
       <Navbar />
-
-      {/* Seção Sobre */}
-      <Hero />
-
-      <div className="max-w-6xl mx-auto px-6 pb-24">
-        <About />
-        <Stack />
-      </div>
-
-      {/* Seção Projetos */}
-      <div style={{ borderTop: '1px solid #1e2a3a' }}>
+      <main id="conteudo">
+        <Hero />
+        <Services />
         <Projects />
-      </div>
-
+        <Process />
+        <About />
+        <Contact />
+      </main>
       <Footer />
-    </div>
+    </MotionConfig>
   );
 }

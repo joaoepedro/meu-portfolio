@@ -1,26 +1,49 @@
+// Projetos exibidos na seção "Projetos".
+// O primeiro da lista aparece em destaque (card grande).
+// Imagens: public/projetos/<imagem>-640.webp e -1200.webp (proporção 16:10)
 export const projects = [
   {
-    id: 1,
-    name: "Raiz Café",
+    id: 'saude-da-mulher',
+    name: 'Saúde da Mulher na Prática',
+    category: 'Lançamento de curso online',
     description:
-      "Landing page para venda de café artesanal. Design moderno e responsivo, com foco em experiência do usuário.",
-    stack: ["React", "Vite", "Tailwind CSS"],
-    url: "https://raizcafe.vercel.app/",
+      'Página de pré-lançamento e vendas que muda de fase sozinha pelas datas do lançamento. A lista de espera vai para o Google Sheets e o checkout da Hotmart abre já preenchido com os dados do lead.',
+    highlights: ['Hotmart', 'Google Sheets', 'Pixels Meta e Google', 'Lighthouse 100 em SEO'],
+    stack: 'HTML · CSS · JavaScript',
+    image: 'saude-da-mulher',
+    url: 'https://saudedamulher.vercel.app/',
   },
   {
-    id: 2,
-    name: "DigitalPro",
+    id: 'raiz-cafe',
+    name: 'Raiz Café',
+    category: 'E-commerce',
     description:
-      "Landing page de agência de marketing digital. Desenvolvida com React, Vite e animações com Framer Motion.",
-    stack: ["React", "Vite", "Tailwind CSS"],
-    url: "https://lp-digitalpro.vercel.app/",
+      'Loja de café especial com carrinho, frete grátis progressivo e eventos de anúncio liberados só depois do consentimento de cookies.',
+    highlights: ['Carrinho', 'Google Tag Manager', 'LGPD'],
+    stack: 'React · Tailwind CSS',
+    image: 'raiz-cafe',
+    url: 'https://raizcafe.vercel.app/',
   },
   {
-    id: 3,
-    name: "Maré Viva",
+    id: 'digitalpro',
+    name: 'DigitalPro',
+    category: 'Curso de marketing digital',
     description:
-      "Landing page para locação de imóveis em cidades litorâneas. Design leve, focado em conversão.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    url: "https://joaoepedro.github.io/lp-mareviva/",
+      'Página de vendas com a estrutura completa de copy: dor, benefícios, módulos, depoimentos, oferta com garantia e perguntas frequentes.',
+    highlights: ['Copy de vendas', 'Animações de rolagem'],
+    stack: 'React · Framer Motion',
+    image: 'digitalpro',
+    url: 'https://lp-digitalpro.vercel.app/',
+  },
+  {
+    id: 'linguaflow',
+    name: 'LinguaFlow',
+    category: 'Escola de idiomas',
+    description:
+      'Landing page com cursos, planos de preço, depoimentos e FAQ, feita sem frameworks e com um design system fácil de adaptar.',
+    highlights: ['Planos de preço', 'Design system'],
+    stack: 'HTML · CSS · JavaScript',
+    image: 'linguaflow',
+    url: 'https://joaoepedro.github.io/linguaflow/',
   },
 ];

@@ -1,112 +1,84 @@
-import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-};
+import SectionTitle from './SectionTitle';
+import Reveal from './Reveal';
 
 export default function Projects() {
+  const [destaque, ...outros] = projects;
   return (
-    <section id="projetos" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-12"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#ffffff' }}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
-          Projetos
-        </motion.h2>
+    <section id="projetos" aria-labelledby="projetos-titulo" className="border-t border-linha py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionTitle
+          id="projetos-titulo"
+          kicker="Projetos"
+          title="Páginas no ar"
+          text="Projetos de portfólio com briefing, copy, identidade visual e integrações. Clique para ver cada um funcionando."
+        />
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+        <Reveal>
+          <ProjectCard project={destaque} featured />
+        </Reveal>
+
+        <ul className="mt-8 grid gap-8 md:grid-cols-3">
+          {outros.map((p, i) => (
+            <Reveal as="li" key={p.id} delay={i * 0.08}>
+              <ProjectCard project={p} />
+            </Reveal>
           ))}
-        </motion.div>
+        </ul>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, featured = false }) {
+  const img = `/projetos/${project.image}`;
   return (
-    <motion.div
-      variants={cardVariants}
-      className="flex flex-col p-6 rounded-xl transition-all duration-300 group"
-      style={{
-        backgroundColor: '#111827',
-        border: '1px solid #1e2a3a',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = '#00f0ff';
-        e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 240, 255, 0.08)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = '#1e2a3a';
-        e.currentTarget.style.boxShadow = 'none';
-      }}
+    <article
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-linha bg-papel transition-shadow duration-300 hover:shadow-[0_18px_40px_-22px_rgba(27,26,23,0.45)] ${
+        featured ? 'lg:grid lg:grid-cols-[1.25fr_1fr]' : ''
+      }`}
     >
-      <h3
-        className="text-lg font-bold mb-2"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#ffffff' }}
-      >
-        {project.name}
-      </h3>
-
-      <p
-        className="text-sm leading-relaxed mb-4 flex-1 line-clamp-2"
-        style={{ fontFamily: "'Inter', sans-serif", color: '#8892a4' }}
-      >
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-2 mb-5">
-        {project.stack.map((tech) => (
-          <span
-            key={tech}
-            className="text-xs px-2.5 py-1 rounded-full"
-            style={{
-              backgroundColor: 'rgba(0, 240, 255, 0.08)',
-              color: '#00f0ff',
-              border: '1px solid rgba(0, 240, 255, 0.2)',
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            {tech}
-          </span>
-        ))}
+      <div className="overflow-hidden border-b border-linha lg:border-b-0">
+        <img
+          src={`${img}-640.webp`}
+          srcSet={`${img}-640.webp 640w, ${img}-1200.webp 1200w`}
+          sizes={featured ? '(min-width: 1024px) 620px, 100vw' : '(min-width: 768px) 360px, 100vw'}
+          width="1200"
+          height="750"
+          loading="lazy"
+          decoding="async"
+          alt=""
+          className="aspect-[16/10] h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+        />
       </div>
 
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm font-semibold group/link inline-flex items-center gap-1 w-fit transition-all duration-200"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#00f0ff' }}
-      >
-        <span className="group-hover/link:underline">Ver projeto</span>
-        <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-1">
-          →
-        </span>
-      </a>
-    </motion.div>
+      <div className={`flex flex-1 flex-col ${featured ? 'p-7 md:p-10' : 'p-6'}`}>
+        <p className="text-xs font-medium tracking-[0.12em] text-terracota-escuro uppercase">{project.category}</p>
+        <h3 className={`mt-2 font-display ${featured ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>{project.name}</h3>
+        <p className="mt-3 leading-relaxed text-suave">{project.description}</p>
+
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Destaques">
+          {project.highlights.map((h) => (
+            <li key={h} className="rounded-full border border-linha px-3 py-1 text-xs text-suave">
+              {h}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-auto flex items-center justify-between gap-4 pt-6">
+          <span className="text-xs text-suave">{project.stack}</span>
+          {/* O ::after estica o link pelo card inteiro: o card todo é clicável */}
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-tinta after:absolute after:inset-0 after:content-[''] hover:text-terracota-escuro"
+          >
+            Ver projeto<span className="sr-only">: {project.name} (abre em nova aba)</span>{' '}
+            <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+          </a>
+        </div>
+      </div>
+    </article>
   );
 }

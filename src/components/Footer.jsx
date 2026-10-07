@@ -1,46 +1,37 @@
-import { FiGithub } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import { links } from '../data/links';
+
+const sociais = [
+  { href: links.whatsapp, label: 'WhatsApp', Icon: FaWhatsapp, externo: true },
+  { href: links.linkedin, label: 'LinkedIn', Icon: FiLinkedin, externo: true },
+  { href: links.github, label: 'GitHub', Icon: FiGithub, externo: true },
+  { href: links.email, label: 'E-mail', Icon: FiMail },
+];
 
 export default function Footer() {
   return (
-    <footer
-      className="py-8 mt-auto"
-      style={{ borderTop: '1px solid #1e2a3a', backgroundColor: '#0a0a0f' }}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex flex-col items-center gap-4">
-        <div className="flex items-center gap-5">
-          <SocialLink href="https://github.com/joaoepedro" label="GitHub">
-            <FiGithub size={20} />
-          </SocialLink>
-          <SocialLink href="https://wa.me/5516994142162" label="WhatsApp">
-            <FaWhatsapp size={20} />
-          </SocialLink>
-        </div>
-
-        <p
-          className="text-sm"
-          style={{ fontFamily: "'Inter', sans-serif", color: '#8892a4' }}
-        >
-          Desenvolvido por João Pedro · 2026
+    <footer className="border-t border-linha">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row">
+        <p className="text-sm text-suave">
+          <span className="font-display text-base font-semibold text-tinta italic">João Pedro</span> · Desenvolvedor web ·{' '}
+          {new Date().getFullYear()}
         </p>
+        <ul className="flex items-center gap-2">
+          {sociais.map(({ href, label, Icon, externo }) => (
+            <li key={label}>
+              <a
+                href={href}
+                {...(externo ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                aria-label={label}
+                className="flex h-11 w-11 items-center justify-center rounded-full text-suave transition-colors hover:bg-areia hover:text-tinta"
+              >
+                <Icon size={19} aria-hidden="true" focusable="false" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
-  );
-}
-
-function SocialLink({ href, label, children }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className="transition-colors duration-200"
-      style={{ color: '#8892a4' }}
-      onMouseEnter={(e) => (e.currentTarget.style.color = '#00f0ff')}
-      onMouseLeave={(e) => (e.currentTarget.style.color = '#8892a4')}
-    >
-      {children}
-    </a>
   );
 }
