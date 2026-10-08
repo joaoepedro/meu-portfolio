@@ -13,7 +13,7 @@ Site pessoal de desenvolvedor web freelancer: serviços, projetos, processo de t
 - **Projetos:** cards com print de cada página e link para a versão no ar
 - **Como trabalho:** as seis etapas, do entendimento do negócio à entrega documentada
 - **Sobre mim:** experiência e tecnologias
-- **Contato:** WhatsApp, e-mail, LinkedIn e GitHub
+- **Contato:** WhatsApp e e-mail
 
 ## Tecnologias
 
@@ -58,7 +58,7 @@ O texto fica separado do layout, em `src/data/`:
 | `services.js` | serviços |
 | `process.js` | etapas do "Como trabalho" |
 | `stack.js` | tecnologias |
-| `links.js` | WhatsApp, e-mail, LinkedIn e GitHub |
+| `links.js` | WhatsApp e e-mail |
 
 **Novo projeto:** salve o print em `public/projetos/` em dois tamanhos, `nome-640.webp` e `nome-1200.webp` (proporção 16:10), e acrescente o projeto em `projects.js`.
 

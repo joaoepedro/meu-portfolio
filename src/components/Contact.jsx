@@ -28,7 +28,6 @@ export default function Contact() {
             Enviar e-mail
           </a>
         </div>
-        <p className="mt-6 text-sm text-[#C9D6C4]">{links.emailTexto}</p>
       </Reveal>
     </section>
   );

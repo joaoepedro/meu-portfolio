@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
  * Esboço de landing page com anotações: mostra que cada bloco
  * da página tem uma função na venda.
  *
- * No celular, todas as anotações ficam à direita do esboço;
- * a partir de 640px, elas se alternam entre os dois lados.
+ * Anotações alternadas (dos dois lados) só quando há espaço:
+ * de 640 a 1023px (coluna única) e a partir de 1280px.
+ * No celular e entre 1024 e 1279px (coluna estreita ao lado do texto),
+ * todas ficam à direita do esboço, para não serem cortadas.
  */
 // Blocos do esboço: posição e altura em % da altura da página
 const blocos = [
@@ -38,7 +40,7 @@ export default function HeroSketch() {
       <motion.div
         {...surgir(0.15)}
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-[56%] rounded-xl border border-linha bg-papel shadow-[0_20px_50px_-24px_rgba(27,26,23,0.4)] sm:left-[22%] sm:w-[56%]"
+        className="absolute inset-y-0 left-0 w-[56%] rounded-xl border border-linha bg-papel shadow-[0_20px_50px_-24px_rgba(27,26,23,0.4)] sm:left-[22%] lg:left-0 xl:left-[22%]"
       >
         {blocos.map((b) => (
           <span
@@ -68,8 +70,8 @@ export default function HeroSketch() {
               style={{ top: `calc(${n.centro}% - 0.75em)` }}
               className={`absolute left-[59%] flex items-center leading-[1.5em] gap-2 font-display text-[0.95rem] whitespace-nowrap text-musgo italic sm:text-base ${
                 n.lado === 'esquerda'
-                  ? 'sm:right-[81%] sm:left-auto sm:flex-row-reverse'
-                  : 'sm:left-[81%]'
+                  ? 'sm:right-[81%] sm:left-auto sm:flex-row-reverse lg:right-auto lg:left-[59%] lg:flex-row xl:right-[81%] xl:left-auto xl:flex-row-reverse'
+                  : 'sm:left-[81%] lg:left-[59%] xl:left-[81%]'
               }`}
             >
               <span aria-hidden="true" className="h-px w-5 shrink-0 bg-musgo sm:w-7" />
