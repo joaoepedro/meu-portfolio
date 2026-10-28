@@ -10,7 +10,7 @@ Site pessoal de desenvolvedor web freelancer: serviços, projetos, processo de t
 
 - **Hero:** proposta de valor, esboço anotado de uma landing page e números da experiência
 - **Serviços:** landing pages, sites institucionais, sistemas web, integrações e automações
-- **Projetos:** cards com print de cada página e link para a versão no ar
+- **Projetos (vitrine de landing pages):** cada projeto numa janela de navegador com o print da página inteira, que rola ao passar o mouse (no celular, rola sozinha). Botões "Ver no ar" e "Quero uma assim" (WhatsApp com mensagem pronta citando o projeto)
 - **Como trabalho:** as seis etapas, do entendimento do negócio à entrega documentada
 - **Sobre mim:** experiência e tecnologias
 - **Contato:** WhatsApp e e-mail
@@ -60,7 +60,7 @@ O texto fica separado do layout, em `src/data/`:
 | `stack.js` | tecnologias |
 | `links.js` | WhatsApp e e-mail |
 
-**Novo projeto:** salve o print em `public/projetos/` em dois tamanhos, `nome-640.webp` e `nome-1200.webp` (proporção 16:10), e acrescente o projeto em `projects.js`.
+**Novo projeto:** tire um print da página inteira no computador (1440px de largura), salve em `public/projetos/` em dois tamanhos, `nome-pagina-720.webp` e `nome-pagina-1200.webp`, e acrescente o projeto em `projects.js`. Projeto ainda sem endereço: deixe `url: ''` e o card mostra "Em breve no ar".
 
 ## Rodar localmente
 

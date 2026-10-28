@@ -43,6 +43,40 @@ body {
   color: #fff;
 }
 
+/* ============================================================
+   Vitrine de landing pages: a "tela" rola o print da página inteira
+   ============================================================ */
+.tela-img {
+  object-fit: cover;
+  object-position: 50% 0%;
+  /* volta ao topo rápido quando o mouse sai */
+  transition: object-position 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tela:hover .tela-img,
+.tela:focus-visible .tela-img,
+.tela[data-rolando] .tela-img {
+  object-position: 50% 100%;
+  /* desce devagar, no tempo proporcional ao tamanho da página */
+  transition-duration: var(--dur, 15s);
+  /* velocidade quase constante: começa e termina com suavidade, sem arrancar */
+  transition-timing-function: cubic-bezier(0.3, 0, 0.7, 1);
+}
+
+.dica-toque { display: none; }
+@media (hover: none) {
+  .dica-mouse { display: none; }
+  .dica-toque { display: inline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tela-img { transition: none; }
+  .tela:hover .tela-img,
+  .tela:focus-visible .tela-img,
+  .tela[data-rolando] .tela-img { object-position: 50% 0%; }
+  .dica-mouse, .dica-toque { display: none; }
+}
+
 :focus-visible {
   outline: 2px solid var(--color-terracota-escuro);
   outline-offset: 3px;
