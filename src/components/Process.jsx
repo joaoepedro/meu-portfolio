@@ -143,7 +143,7 @@ export default function Process() {
         onScroll={aoRolar}
         tabIndex={celular ? 0 : undefined}
         aria-label="As oito etapas"
-        className="carrossel relative -mx-5 mt-9 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pt-1.5 pb-1 md:mx-0 md:mt-16 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:p-0 xl:grid-cols-4"
+        className="carrossel relative -mx-5 mt-9 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pt-1.5 pb-5 md:mx-0 md:mt-16 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:p-0 xl:grid-cols-4"
       >
         {etapas.map((titulo, i) => (
           <li
@@ -169,7 +169,7 @@ export default function Process() {
       </ol>
 
       {/* celular: linha que progride conforme você desliza pelas etapas */}
-      <div aria-hidden="true" className="mt-[18px] flex items-center gap-3.5 font-mono text-[10.5px] tracking-[0.14em] text-noite-suave uppercase md:hidden">
+      <div aria-hidden="true" className="mt-0.5 flex items-center gap-3.5 font-mono text-[10.5px] tracking-[0.14em] text-noite-suave uppercase md:hidden">
         <span className="relative h-px flex-1 bg-noite-linha">
           <span
             className="passo-progresso absolute -top-px left-0 h-[3px] w-full origin-left bg-acento"

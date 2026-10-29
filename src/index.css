@@ -82,9 +82,15 @@ body {
 }
 .revelar[data-visivel] { opacity: 1; transform: none; }
 
-/* carrosséis do celular: sem barra de rolagem visível */
+/* carrosséis do celular: só rolam de lado (nada de rolagem vertical dentro deles),
+   sem barra visível e sem arrastar a página junto no fim da faixa */
 .carrossel { scrollbar-width: none; }
 .carrossel::-webkit-scrollbar { display: none; }
+@media (max-width: 47.99rem) {
+  .carrossel { overflow-y: hidden; overscroll-behavior-x: contain; }
+  /* dentro do carrossel os cards já estão no lugar: sem o efeito de aparecer */
+  .carrossel .revelar { opacity: 1; transform: none; transition: none; }
+}
 
 /* ============================================================
    Vitrine de landing pages: a "tela" rola o print da página inteira
