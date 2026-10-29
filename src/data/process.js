@@ -1,26 +1,12 @@
-export const process = [
-    {
-        title: "Entendo o negócio",
-        text: "Quem compra, o que trava a decisão e de onde vêm as visitas. É isso que guia todas as escolhas da página.",
-    },
-    {
-        title: "Estruturo a copy",
-        text: "Dor, solução, prova, oferta, objeções e chamadas para ação, na ordem em que o visitante pensa.",
-    },
-    {
-        title: "Crio a identidade visual",
-        text: "Cores, tipografia e layout pensados para o público, começando pela tela do celular.",
-    },
-    {
-        title: "Desenvolvo e integro",
-        text: "Formulários, planilha ou CRM, checkout, pixels de anúncio e SEO, tudo conectado.",
-    },
-    {
-        title: "Testo e publico",
-        text: "Velocidade, acessibilidade e funcionamento em vários tamanhos de tela antes de ir para o ar.",
-    },
-    {
-        title: "Entrego documentado",
-        text: "Você troca datas, preços, links e textos sem depender de mim, e sabe exatamente o que foi feito.",
-    },
+// As oito etapas da seção "Como trabalho" (mesma ordem da skill /landing-page).
+// O objeto visual de cada etapa fica em components/Process.jsx.
+export const etapas = [
+  'Briefing',
+  'Persona',
+  'Copy',
+  'Identidade visual',
+  'Código',
+  'Integrações',
+  'Testes',
+  'No ar',
 ];

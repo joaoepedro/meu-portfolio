@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Identidade visual — "Editorial quente"
+   Identidade visual — "Noite de revista" (direção 4.2a revisada)
    Os tokens abaixo viram classes do Tailwind:
-   bg-creme, text-tinta, text-terracota, font-display...
+   bg-noite, text-noite-suave, text-acento, font-titulo, font-mono...
    ============================================================ */
 @theme {
-  --color-creme: #F4F0E8;        /* fundo principal */
-  --color-papel: #FBF9F4;        /* cards e superfícies */
-  --color-areia: #EAE3D6;        /* fundo alternativo de seção */
-  --color-linha: #DED6C6;        /* bordas e divisórias */
-  --color-tinta: #1B1A17;        /* texto principal e botão primário */
-  --color-suave: #55524B;        /* texto secundário (contraste 6.9:1) */
-  --color-terracota: #C2502D;    /* destaque em textos grandes */
-  --color-terracota-escuro: #A8431F; /* destaque em textos pequenos (5.3:1) */
-  --color-terracota-claro: #E07A55;  /* destaque sobre fundo escuro */
-  --color-musgo: #2F4A3A;        /* cor de apoio */
+  --color-noite: #111013;        /* fundo */
+  --color-noite-cartao: #141316; /* cards da vitrine */
+  --color-noite-barra: #18171B;  /* barra do navegador, bloco de código */
+  --color-noite-funda: #0C0B0D;  /* tela dos prints */
+  --color-noite-linha: #2E2B2F;  /* réguas e divisórias */
+  --color-noite-texto: #EFE8DC;  /* texto principal; fundo do botão */
+  --color-noite-suave: #A39C90;  /* 1ª frase, rótulos, legenda (~7:1) */
+  --color-acento: #E4532F;       /* palavra que muda, pontos, cursor (5:1 sobre o fundo) */
+  --color-luz: rgba(228, 83, 47, 0.34); /* ponto de luz */
 
-  --font-display: "Fraunces Variable", Georgia, serif;
-  --font-sans: "Geist Variable", system-ui, sans-serif;
+  --font-titulo: "Familjen Grotesk Variable", system-ui, sans-serif;
+  --font-texto: "Instrument Sans Variable", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* compensa o menu fixo */
+  scroll-padding-top: 1.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -31,17 +31,60 @@ html {
 }
 
 body {
-  background-color: var(--color-creme);
-  color: var(--color-tinta);
-  font-family: var(--font-sans);
+  background-color: var(--color-noite);
+  color: var(--color-noite-texto);
+  font-family: var(--font-texto);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: var(--color-terracota);
-  color: #fff;
+  background: var(--color-acento);
+  color: var(--color-noite);
 }
+
+/* sobre o fundo escuro, o contorno de foco é claro */
+:focus-visible {
+  outline: 2px solid var(--color-noite-texto);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* margem lateral padrão das seções depois do hero:
+   20px no celular, 40px no tablet e, no computador, pelo menos 96px,
+   com o conteúdo limitado a 1312px de largura nas telas grandes */
+.secao { padding-inline: 20px; }
+@media (min-width: 48rem) { .secao { padding-inline: 40px; } }
+@media (min-width: 64rem) { .secao { padding-inline: max(96px, calc((100% - 1312px) / 2)); } }
+
+/* rótulo de seção: "— 02 · Como trabalho" */
+.rotulo {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-noite-suave);
+}
+@media (min-width: 48rem) {
+  .rotulo { font-size: 12px; letter-spacing: 0.24em; }
+}
+
+/* ponto de luz num canto (convite da vitrine, contato) */
+.luz-canto {
+  background: radial-gradient(circle at 85% 0%, rgba(228, 83, 47, 0.3), transparent 55%), var(--color-noite);
+}
+
+/* seções e cards aparecem ao entrar na tela (components/Reveal.jsx) */
+.revelar {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.revelar[data-visivel] { opacity: 1; transform: none; }
+
+/* carrosséis do celular: sem barra de rolagem visível */
+.carrossel { scrollbar-width: none; }
+.carrossel::-webkit-scrollbar { display: none; }
 
 /* ============================================================
    Vitrine de landing pages: a "tela" rola o print da página inteira
@@ -69,16 +112,220 @@ body {
   .dica-toque { display: inline; }
 }
 
+/* ============================================================
+   Pontos que brilham (destaque, convite, "No ar") e cursor piscando
+   ============================================================ */
+.brilho::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 3px rgba(228, 83, 47, 0.6);
+  opacity: 0;
+  animation: hero-brilho 2.5s ease-out infinite;
+}
+.cursor-piscando { animation: hero-cursor 1s step-end infinite; }
+
+/* ============================================================
+   Faixa das tecnologias
+   ============================================================ */
+.esteira { animation: esteira 40s linear infinite; }
+@keyframes esteira {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   Como trabalho: as oito etapas acendem uma por vez (ciclo de 8s).
+   Cada card recebe --atraso (0s, 1s, 2s...). Só anima transform e opacity.
+   ============================================================ */
+.passo { position: relative; animation: passo-sobe 8s ease infinite var(--atraso, 0s); }
+.passo::before,
+.passo::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  animation: passo-acende 8s ease infinite var(--atraso, 0s);
+}
+.passo::before { inset: -1px; border: 1px solid var(--color-acento); }
+.passo::after {
+  inset: 0;
+  background: radial-gradient(circle at 18% 0%, rgba(228, 83, 47, 0.16), transparent 60%);
+  box-shadow: 0 22px 44px -26px rgba(228, 83, 47, 0.55);
+}
+.passo-ponto { opacity: 0; animation: passo-acende 8s ease infinite var(--atraso, 0s); }
+.passo-progresso { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* celular: o destaque não roda sozinho, acompanha a rolagem do carrossel */
+@media (max-width: 47.99rem) {
+  .passo, .passo::before, .passo::after, .passo-ponto { animation: none; }
+  .passo { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+  .passo::before, .passo::after, .passo-ponto { transition: opacity 0.4s ease; }
+  .passo[data-ativo] { transform: translateY(-4px); }
+  .passo[data-ativo]::before, .passo[data-ativo]::after, .passo[data-ativo] .passo-ponto { opacity: 1; }
+}
+.anel-lighthouse { animation: anel-lighthouse 4s ease-out infinite alternate; }
+
+/* fora da tela, a seção fica parada */
+.processo:not([data-visivel]) :is(.passo, .passo-ponto, .anel-lighthouse),
+.processo:not([data-visivel]) .passo::before,
+.processo:not([data-visivel]) .passo::after { animation-play-state: paused; }
+
+@keyframes passo-sobe {
+  0%, 11% { transform: translateY(-4px); }
+  14%, 100% { transform: none; }
+}
+@keyframes passo-acende {
+  0%, 11% { opacity: 1; }
+  14%, 100% { opacity: 0; }
+}
+@keyframes anel-lighthouse {
+  0%, 20% { stroke-dashoffset: 182; }
+  60%, 100% { stroke-dashoffset: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .revelar { opacity: 1; transform: none; transition: none; }
   .tela-img { transition: none; }
   .tela:hover .tela-img,
   .tela:focus-visible .tela-img,
   .tela[data-rolando] .tela-img { object-position: 50% 0%; }
   .dica-mouse, .dica-toque { display: none; }
+
+  .brilho::after, .cursor-piscando,
+  .passo, .passo::before, .passo::after, .passo-ponto, .anel-lighthouse { animation: none; }
+  .passo, .passo::before, .passo::after, .passo-ponto, .passo-progresso { transition: none; }
+
+  /* a faixa para e quebra em linhas */
+  .esteira { animation: none; width: auto; }
+  .esteira > ul:first-child { flex-wrap: wrap; white-space: normal; row-gap: 0.75rem; }
+  .esteira-copia { display: none; }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-terracota-escuro);
-  outline-offset: 3px;
-  border-radius: 4px;
+/* ============================================================
+   Hero — título que se reescreve (direção "4.2a revisada")
+   Ciclo de 12,5s: cada palavra tem 2,5s (digita em ~0,9s, fica, apaga).
+   Só anima opacity, transform e a largura do texto.
+   A palavra é desenhada pelo ::before (attr), então o HTML do <h1>
+   só tem a frase final, sem as palavras animadas.
+   ============================================================ */
+
+.hero-palavra {
+  --cursor: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  box-sizing: content-box;
+  max-width: 0;
+  padding-right: calc(4px + var(--cursor)); /* espaço + cursor */
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--color-acento);
+  opacity: 0;
+  animation: hero-palavra 12.5s steps(9, end) infinite;
+  animation-delay: calc(var(--i) * 2.5s - 12.5s);
+}
+.hero-palavra::before { content: attr(data-palavra); }
+.hero-palavra::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--cursor);
+  background: currentColor;
+  animation: hero-cursor 1s step-end infinite;
+}
+
+.hero-legenda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  opacity: 0;
+  animation: hero-legenda 12.5s ease infinite;
+  animation-delay: calc(var(--i) * 2.5s - 12.5s);
+}
+
+/* um único ponto de luz, parado, que acende a cada troca */
+.hero-luz {
+  position: absolute;
+  left: -1.8em;
+  top: -2.2em;
+  width: 6.8em;
+  height: 5.6em;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 42% 50%, var(--color-luz), transparent 58%);
+  animation: hero-luz 2.5s ease-out infinite;
+}
+
+/* o ponto do "jotap." brilha no mesmo ritmo */
+.hero-ponto {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 3px;
+  border-radius: 50%;
+  background: var(--color-acento);
+}
+.hero-ponto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 3px rgba(228, 83, 47, 0.6);
+  opacity: 0;
+  animation: hero-brilho 2.5s ease-out infinite;
+}
+
+@media (min-width: 48rem) {
+  .hero-palavra { --cursor: 4px; padding-right: calc(6px + var(--cursor)); }
+  .hero-luz { left: -1.44em; top: -1.63em; width: 5.38em; height: 4.23em; }
+  .hero-ponto { width: 9px; height: 9px; }
+  .hero-ponto::after { box-shadow: 0 0 14px 4px rgba(228, 83, 47, 0.6); }
+}
+
+@keyframes hero-palavra {
+  0% { max-width: 0; opacity: 1; }
+  7%, 15% { max-width: 7em; opacity: 1; }
+  19% { max-width: 0; opacity: 1; }
+  19.5%, 100% { max-width: 0; opacity: 0; }
+}
+@keyframes hero-cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes hero-legenda {
+  0%, 2% { opacity: 0; transform: translateY(6px); }
+  7%, 16% { opacity: 1; transform: none; }
+  19%, 100% { opacity: 0; transform: translateY(-6px); }
+}
+@keyframes hero-luz {
+  0% { opacity: 0.55; transform: scale(0.92); }
+  9% { opacity: 1; transform: scale(1); }
+  20%, 100% { opacity: 0.55; transform: scale(0.92); }
+}
+@keyframes hero-brilho {
+  0% { opacity: 0; transform: scale(0.6); }
+  9% { opacity: 1; transform: scale(1); }
+  20%, 100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* "Reduzir movimento": direto "cliente." e "o seu negócio", sem cursor nem pulsar.
+   As palavras inativas somem de verdade (nenhum display inline brigando com esta regra). */
+@media (prefers-reduced-motion: reduce) {
+  .hero-palavra,
+  .hero-legenda,
+  .hero-luz,
+  .hero-ponto::after { animation: none; }
+  .hero-palavra:not(.hero-final),
+  .hero-legenda:not(.hero-final) { display: none; }
+  .hero-palavra.hero-final { max-width: none; padding-right: 0; opacity: 1; }
+  .hero-palavra::after { display: none; }
+  .hero-legenda.hero-final { opacity: 1; transform: none; }
 }

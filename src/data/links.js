@@ -1,4 +1,4 @@
-// Contatos usados no menu, no hero, na seção de contato e no rodapé.
+// Contato do site: só o WhatsApp (no hero, na vitrine, no contato e no rodapé).
 // Para trocar um link, mude só aqui.
 const whatsappNumero = '5516994142162';
 
@@ -8,6 +8,4 @@ export const whatsappCom = (mensagem) =>
 
 export const links = {
   whatsapp: whatsappCom('Olá, João! Vi seu portfólio e quero conversar sobre um projeto.'),
-  email: 'mailto:joaopdromorais@gmail.com',
-  emailTexto: 'joaopdromorais@gmail.com',
 };

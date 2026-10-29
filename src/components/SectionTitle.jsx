@@ -1,15 +1,33 @@
 import Reveal from './Reveal';
 
-export default function SectionTitle({ kicker, title, text, id }) {
+/**
+ * Abertura de seção na identidade "Noite de revista":
+ * rótulo em mono ("— 02 · Como trabalho"), título grotesco e, no computador,
+ * um texto curto alinhado à direita.
+ * O título vem como children: 1ª parte em <Suave>, final em <Acento>.
+ */
+export default function SectionTitle({ numero, rotulo, id, texto, children }) {
   return (
-    <Reveal className="mb-12 max-w-2xl md:mb-16">
-      <p className="mb-3 text-xs font-medium tracking-[0.14em] text-terracota-escuro uppercase">
-        {kicker}
-      </p>
-      <h2 id={id} className="font-display text-4xl leading-[1.05] tracking-tight text-balance md:text-5xl">
-        {title}
-      </h2>
-      {text && <p className="mt-5 text-lg leading-relaxed text-suave">{text}</p>}
+    <Reveal className="grid gap-5 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+      <div className="lg:col-span-8">
+        <p className="rotulo mb-[18px] md:mb-[22px]">
+          — {numero} · {rotulo}
+        </p>
+        <h2
+          id={id}
+          className="font-titulo text-[clamp(2.625rem,5vw,4.5rem)] leading-[0.95] font-semibold tracking-[-0.05em] text-balance md:leading-[0.92]"
+        >
+          {children}
+        </h2>
+      </div>
+      {texto && (
+        <p className="text-base leading-[1.55] text-noite-suave md:text-[17px] lg:col-span-4 lg:col-start-9 lg:mb-1.5">
+          {texto}
+        </p>
+      )}
     </Reveal>
   );
 }
+
+export const Suave = ({ children }) => <span className="font-medium text-noite-suave">{children}</span>;
+export const Acento = ({ children }) => <span className="text-acento">{children}</span>;

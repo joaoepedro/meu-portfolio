@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo · Hero · computador</title>
+<!-- Protótipo aprovado do hero (rodada 4.2a revisada). Referência visual, não é o código final do site. -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&amp;family=Instrument+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}a:hover{opacity:.85}
+.grot{font-family:"Familjen Grotesk",system-ui,sans-serif}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+@keyframes palavra{0%{max-width:0;opacity:1}7%,15%{max-width:7em;opacity:1}19%{max-width:0;opacity:1}19.5%,100%{max-width:0;opacity:0}}
+@keyframes pisca{0%,49%{border-right-color:var(--acento)}50%,100%{border-right-color:transparent}}
+@keyframes legenda{0%,2%{opacity:0;transform:translateY(6px)}7%,16%{opacity:1;transform:none}19%,100%{opacity:0;transform:translateY(-6px)}}
+@keyframes ponto{0%{opacity:.55;transform:scale(.92)}9%{opacity:1;transform:scale(1)}20%,100%{opacity:.55;transform:scale(.92)}}
+/* o ponto do símbolo acende junto com o ponto de luz do título */
+@keyframes brilhoPonto{0%{box-shadow:0 0 0 0 rgba(228,83,47,0)}9%{box-shadow:0 0 14px 4px rgba(228,83,47,.6)}20%,100%{box-shadow:0 0 0 0 rgba(228,83,47,0)}}
+.p{animation:palavra 12.5s steps(9,end) infinite,pisca 1s step-end infinite}
+.l{animation:legenda 12.5s ease infinite}
+.ponto{animation:ponto 2.5s ease-out infinite}
+.brilho{animation:brilhoPonto 2.5s ease-out infinite}
+.k1{animation-delay:-10s,0s}.k2{animation-delay:-7.5s,0s}.k3{animation-delay:-5s,0s}.k4{animation-delay:-2.5s,0s}
+.l.k1{animation-delay:-10s}.l.k2{animation-delay:-7.5s}.l.k3{animation-delay:-5s}.l.k4{animation-delay:-2.5s}
+@media (prefers-reduced-motion: reduce){
+  .p,.l,.ponto,.brilho{animation:none}
+  .p,.l{display:none}.p.k4,.l.k4{display:inline-block}
+}
+</style>
+
+<style>body{background:#111013;display:flex;justify-content:center}</style>
+</head>
+<body>
+
+
+<div style="--bg:#111013; --linha:#2E2B2F; --texto:#EFE8DC; --suave:#A39C90; --acento:#E4532F; --acento-txt:#111013; --luz:rgba(228,83,47,.34); width: 1440px; height: 900px; position: relative; overflow: hidden; background: var(--bg); color: var(--texto); font-family: 'Instrument Sans', system-ui, sans-serif;">
+
+  <header style="position: absolute; left: 64px; right: 64px; top: 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; z-index: 2;">
+    <span class="mono" style="font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--suave);">Nº 01 · Portfólio</span>
+    <a href="#topo" aria-label="João Pedro, voltar ao início" class="mono" style="justify-self: center; display: inline-flex; align-items: baseline; font-size: 28px; font-weight: 500; letter-spacing: -0.03em; text-decoration: none; line-height: 1;">jotap<span class="brilho" aria-hidden="true" style="display: inline-block; width: 9px; height: 9px; margin-left: 3px; border-radius: 50%; background: var(--acento);"></span></a>
+    <span class="mono" style="justify-self: end; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--suave);">Edição 2026</span>
+  </header>
+  <div aria-hidden="true" style="position: absolute; left: 64px; right: 64px; top: 92px; height: 1px; background: var(--linha);"></div>
+
+  <section id="topo" style="position: absolute; left: 64px; right: 64px; top: 256px;">
+    <p class="mono" style="margin: 0 0 22px; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--suave);">— Landing pages · integrações · sistemas</p>
+    <h1 class="grot" style="position: relative; z-index: 0; margin: 0; font-size: 104px; line-height: 0.92; letter-spacing: -0.05em; font-weight: 600;">
+      <span style="color: var(--suave); font-weight: 500;">Seu anúncio traz a visita.</span><br>
+      Minha página traz o<br>
+      <span aria-hidden="true" style="position: relative; display: inline-block; height: 1.02em; min-width: 6em; vertical-align: top;">
+        <span class="ponto" style="position: absolute; left: -150px; top: -170px; width: 560px; height: 440px; background: radial-gradient(circle at 42% 50%, var(--luz), transparent 58%); pointer-events: none; z-index: -1;"></span>
+        <span class="p" style="position: absolute; left: 0; top: 0; display: inline-block; overflow: hidden; white-space: nowrap; max-width: 0; color: var(--acento); border-right: 4px solid var(--acento); padding-right: 6px;">paciente.</span>
+        <span class="p k1" style="position: absolute; left: 0; top: 0; display: inline-block; overflow: hidden; white-space: nowrap; max-width: 0; color: var(--acento); border-right: 4px solid var(--acento); padding-right: 6px;">pedido.</span>
+        <span class="p k2" style="position: absolute; left: 0; top: 0; display: inline-block; overflow: hidden; white-space: nowrap; max-width: 0; color: var(--acento); border-right: 4px solid var(--acento); padding-right: 6px;">orçamento.</span>
+        <span class="p k3" style="position: absolute; left: 0; top: 0; display: inline-block; overflow: hidden; white-space: nowrap; max-width: 0; color: var(--acento); border-right: 4px solid var(--acento); padding-right: 6px;">aluno.</span>
+        <span class="p k4" style="position: absolute; left: 0; top: 0; display: inline-block; overflow: hidden; white-space: nowrap; max-width: 7em; color: var(--acento); border-right: 4px solid var(--acento); padding-right: 6px;">cliente.</span>
+      </span>
+      <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">cliente.</span>
+    </h1>
+  </section>
+
+  <div style="position: absolute; left: 64px; right: 64px; top: 762px; display: flex; justify-content: space-between; align-items: center;">
+    <span aria-hidden="true" class="mono" style="position: relative; display: inline-block; width: 520px; height: 20px; font-size: 13px; color: var(--suave);">
+      <span class="l" style="position: absolute; left: 0; top: 0;">clínica odontológica · agenda online</span>
+      <span class="l k1" style="position: absolute; left: 0; top: 0;">doceria · pedido pelo WhatsApp</span>
+      <span class="l k2" style="position: absolute; left: 0; top: 0;">energia solar · simulador de economia</span>
+      <span class="l k3" style="position: absolute; left: 0; top: 0;">curso online · lançamento na Hotmart</span>
+      <span class="l k4" style="position: absolute; left: 0; top: 0;">o seu negócio · vamos conversar</span>
+    </span>
+    <a href="#contato" style="display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 30px; border-radius: 999px; background: var(--texto); color: var(--bg); font-weight: 600; font-size: 15px; text-decoration: none;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"></path></svg>
+      Quero a minha página
+    </a>
+  </div>
+
+  <div aria-hidden="true" style="position: absolute; left: 64px; right: 64px; bottom: 56px; height: 1px; background: var(--linha);"></div>
+  <footer class="mono" style="position: absolute; left: 64px; right: 64px; bottom: 24px; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--suave);">
+    <span>João Pedro · desenvolvedor web</span><span>Role para ver a vitrine ↓</span>
+  </footer>
+</div>
+
+</body>
+</html>

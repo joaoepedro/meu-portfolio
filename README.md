@@ -1,66 +1,55 @@
 # João Pedro · Portfólio
 
-[![odevjp.vercel.app](https://img.shields.io/badge/site-odevjp.vercel.app-C2502D?style=flat-square&labelColor=1B1A17)](https://odevjp.vercel.app/)
+[![odevjp.vercel.app](https://img.shields.io/badge/site-odevjp.vercel.app-E4532F?style=flat-square&labelColor=111013)](https://odevjp.vercel.app/)
 
-Site pessoal de desenvolvedor web freelancer: serviços, projetos, processo de trabalho e contato.
-
-![Portfólio no desktop e no celular](docs/capa.jpg)
+Site pessoal de desenvolvedor web freelancer: vitrine de landing pages, processo de trabalho, serviços e contato.
 
 ## Seções
 
-- **Hero:** proposta de valor, esboço anotado de uma landing page e números da experiência
-- **Serviços:** landing pages, sites institucionais, sistemas web, integrações e automações
-- **Projetos (vitrine de landing pages):** cada projeto numa janela de navegador com o print da página inteira, que rola ao passar o mouse (no celular, rola sozinha). Botões "Ver no ar" e "Quero uma assim" (WhatsApp com mensagem pronta citando o projeto)
-- **Como trabalho:** as seis etapas, do entendimento do negócio à entrega documentada
-- **Sobre mim:** experiência e tecnologias
-- **Contato:** WhatsApp e e-mail
+- **Hero:** título que se reescreve ("Seu anúncio traz a visita. Minha página traz o *paciente / pedido / orçamento / aluno / cliente*."), um ponto de luz e o botão do WhatsApp, numa moldura editorial
+- **01 · Vitrine:** cada projeto numa janela de navegador com o print da página inteira, que rola ao passar o mouse (no celular, rola sozinha). No celular, os projetos ficam num carrossel de deslizar. Botões "Ver no ar" e "Quero uma assim" (WhatsApp com mensagem pronta citando o projeto)
+- **Faixa das tecnologias**, rolando entre duas réguas
+- **02 · Como trabalho:** as oito etapas (briefing, persona, copy, identidade visual, código, integrações, testes, no ar), cada uma com o objeto que entrega. No computador acendem em sequência; no celular, acompanham a rolagem
+- **03 · Serviços:** landing pages, sites institucionais, sistemas web, integrações e automações
+- **04 · Contato:** WhatsApp
+
+Todas as animações respeitam "reduzir movimento" do sistema.
 
 ## Tecnologias
 
 - **React** + **Vite**
 - **Tailwind CSS v4** (tokens da identidade no `@theme` de `src/index.css`)
-- **Framer Motion** (animações de entrada, respeitando "reduzir movimento")
-- **Fontsource** (fontes hospedadas no próprio site, sem depender do Google Fonts)
-- **React Icons**
+- **Framer Motion** (entrada das seções)
+- **Fontsource** (fontes hospedadas no próprio site)
 
-## Identidade visual: "Editorial quente"
+## Identidade visual: "Noite de revista"
 
 | Token | Valor | Uso |
 |---|---|---|
-| `creme` | `#F4F0E8` | fundo principal |
-| `papel` | `#FBF9F4` | cards e superfícies |
-| `tinta` | `#1B1A17` | texto e botão primário |
-| `suave` | `#55524B` | texto secundário |
-| `terracota` | `#C2502D` | destaque em textos grandes |
-| `terracota-escuro` | `#A8431F` | destaque em textos pequenos |
-| `musgo` | `#2F4A3A` | cor de apoio |
+| `noite` | `#111013` | fundo |
+| `noite-linha` | `#2E2B2F` | réguas e divisórias |
+| `noite-texto` | `#EFE8DC` | texto principal; fundo dos botões |
+| `noite-suave` | `#A39C90` | 1ª parte dos títulos, rótulos, legendas |
+| `acento` | `#E4532F` | palavra que muda, pontos, cursor, final dos títulos |
+| `luz` | `rgba(228,83,47,.34)` | ponto de luz |
 
-**Tipografia:** Fraunces (títulos) e Geist (texto).
-
-## Qualidade
-
-| Lighthouse | Celular | Desktop |
-|---|---|---|
-| Desempenho | 96 | 100 |
-| Acessibilidade | 100 | 100 |
-| Boas práticas | 100 | 100 |
-| SEO | 100 | 100 |
-
-Zero problemas no [axe](https://www.deque.com/axe/) (WCAG 2.2 AA), testado de 320px a 1440px e com navegação por teclado.
+**Tipografia:** Familjen Grotesk (títulos), Instrument Sans (texto e botões) e IBM Plex Mono ("jotap.", rótulos, legendas, rodapé).
 
 ## Como editar o conteúdo
 
-O texto fica separado do layout, em `src/data/`:
+O texto fica em `src/data/`:
 
 | Arquivo | Conteúdo |
 |---|---|
-| `projects.js` | projetos (o primeiro aparece em destaque) |
+| `projects.js` | projetos da vitrine (o primeiro aparece em destaque) |
+| `process.js` | nomes das oito etapas (os objetos de cada uma ficam em `components/Process.jsx`) |
 | `services.js` | serviços |
-| `process.js` | etapas do "Como trabalho" |
-| `stack.js` | tecnologias |
-| `links.js` | WhatsApp e e-mail |
+| `stack.js` | tecnologias da faixa |
+| `links.js` | WhatsApp |
 
-**Novo projeto:** tire um print da página inteira no computador (1440px de largura), salve em `public/projetos/` em dois tamanhos, `nome-pagina-720.webp` e `nome-pagina-1200.webp`, e acrescente o projeto em `projects.js`. Projeto ainda sem endereço: deixe `url: ''` e o card mostra "Em breve no ar".
+**Novo projeto:** tire um print da página inteira no computador (1440px de largura), salve em `public/projetos/` em dois tamanhos, `nome-pagina-720.webp` e `nome-pagina-1200.webp`, e acrescente o projeto em `projects.js`.
+
+**Velocidade da rolagem dos prints:** constante `SEGUNDOS_POR_TELA` no topo de `src/components/Projects.jsx` (maior = mais devagar).
 
 ## Rodar localmente
 

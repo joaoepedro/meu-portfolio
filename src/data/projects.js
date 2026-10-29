@@ -6,7 +6,7 @@
 //   <imagem>-pagina-720.webp e <imagem>-pagina-1200.webp
 // Ao passar o mouse, a tela do card "rola" o print de cima a baixo.
 //
-// url vazia ('') = projeto ainda não publicado: o card mostra "Em breve no ar".
+// url vazia ('') = projeto ainda não publicado: ele não aparece na vitrine.
 export const projects = [
     {
         id: "mimo-doceria",
@@ -45,17 +45,6 @@ export const projects = [
         stack: "HTML · CSS · JavaScript",
         image: "econowatt",
         url: "https://econowatt.vercel.app/",
-    },
-    {
-        id: "saude-da-mulher",
-        name: "Saúde da Mulher na Prática",
-        category: "Lançamento de curso online · fisioterapia",
-        description:
-            "Página de pré-lançamento e vendas que muda de fase sozinha pelas datas do lançamento. A lista de espera vai para o Google Sheets e o checkout da Hotmart abre já preenchido com os dados do lead.",
-        highlights: ["Hotmart", "Google Sheets", "Pixels Meta e Google"],
-        stack: "HTML · CSS · JavaScript",
-        image: "saude-da-mulher",
-        url: "https://saudedamulher.vercel.app/",
     },
     {
         id: "raiz-cafe",

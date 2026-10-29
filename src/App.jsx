@@ -1,34 +1,30 @@
-import { MotionConfig } from 'framer-motion';
-import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Services from './components/Services';
 import Projects from './components/Projects';
+import Stack from './components/Stack';
 import Process from './components/Process';
-import About from './components/About';
+import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
-    // reducedMotion="user": quem ativa "reduzir movimento" no sistema
-    // vê o conteúdo sem deslocamentos
-    <MotionConfig reducedMotion="user">
+    <>
       <a
         href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:bg-tinta focus:px-4 focus:py-2 focus:text-creme"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-noite-texto focus:px-4 focus:py-2 focus:font-semibold focus:text-noite"
       >
         Pular para o conteúdo
       </a>
-      <Navbar />
+      {/* Sem menu de navegação: a direção "4.2a revisada" tira o menu do topo */}
       <main id="conteudo">
         <Hero />
-        <Services />
         <Projects />
+        <Stack />
         <Process />
-        <About />
+        <Services />
         <Contact />
       </main>
       <Footer />
-    </MotionConfig>
+    </>
   );
 }

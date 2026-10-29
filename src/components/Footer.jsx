@@ -1,33 +1,25 @@
-import { FiMail } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
 import { links } from '../data/links';
 
-const sociais = [
-  { href: links.whatsapp, label: 'WhatsApp', Icon: FaWhatsapp, externo: true },
-  { href: links.email, label: 'E-mail', Icon: FiMail },
-];
-
+/* Rodapé: fecha a moldura editorial aberta no topo do hero. */
 export default function Footer() {
+  const link = 'inline-flex min-h-11 items-center transition-colors hover:text-noite-texto';
   return (
-    <footer className="border-t border-linha">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-around gap-6 px-6 py-10 sm:flex-row">
-        <p className="text-sm text-suave">
-          <span className="font-display text-base font-semibold text-tinta italic">João Pedro</span> · Desenvolvedor web ·{' '}
-          {new Date().getFullYear()}
-        </p>
-        <ul className="flex items-center gap-2">
-          {sociais.map(({ href, label, Icon, externo }) => (
-            <li key={label}>
-              <a
-                href={href}
-                {...(externo ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                aria-label={label}
-                className="flex h-11 w-11 items-center justify-center rounded-full text-suave transition-colors hover:bg-areia hover:text-tinta"
-              >
-                <Icon size={19} aria-hidden="true" focusable="false" />
-              </a>
-            </li>
-          ))}
+    <footer className="secao mt-24 md:mt-32 lg:mt-[140px]">
+      <div aria-hidden="true" className="h-px bg-noite-linha" />
+      <div className="flex flex-col items-center gap-1 py-4 font-mono text-[10.5px] tracking-[0.14em] text-noite-suave uppercase md:flex-row md:justify-between md:pt-3 md:pb-4 md:text-[11px]">
+        <p className="order-2 py-2 md:order-none md:py-0">João Pedro · desenvolvedor web · {new Date().getFullYear()}</p>
+        <ul className="flex items-center gap-6">
+          <li>
+            <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className={link}>
+              WhatsApp <span aria-hidden="true">&nbsp;↗</span>
+              <span className="sr-only"> (abre em nova aba)</span>
+            </a>
+          </li>
+          <li>
+            <a href="#topo" className={link}>
+              Voltar ao topo <span aria-hidden="true">&nbsp;↑</span>
+            </a>
+          </li>
         </ul>
       </div>
     </footer>

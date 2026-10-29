@@ -1,8 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '@fontsource-variable/fraunces/wght.css'
-import '@fontsource-variable/fraunces/wght-italic.css'
-import '@fontsource-variable/geist'
+// Identidade "Noite de revista": fontes servidas pelo próprio site (Fontsource)
+import '@fontsource-variable/familjen-grotesk/wght.css'
+import '@fontsource-variable/instrument-sans/wght.css'
+import '@fontsource/ibm-plex-mono/400.css'
+import '@fontsource/ibm-plex-mono/500.css'
 import './index.css'
 import App from './App.jsx'
 
