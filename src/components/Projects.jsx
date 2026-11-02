@@ -144,7 +144,6 @@ function ProjectCard({ project, featured = false }) {
             </li>
           ))}
         </ul>
-        <p className="mt-4 hidden font-mono text-[11.5px] text-noite-suave md:block">{project.stack}</p>
 
         <div className="mt-auto grid grid-cols-[auto_1fr] gap-2 pt-5 md:flex md:flex-wrap md:pt-[22px]">
           <a

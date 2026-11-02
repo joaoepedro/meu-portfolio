@@ -20,7 +20,6 @@ export const projects = [
             "Cardápio com preços",
             "SEO local",
         ],
-        stack: "React · Tailwind CSS · Lovable",
         image: "mimo-doceria",
         url: "https://mimodoceria.vercel.app/",
     },
@@ -31,7 +30,6 @@ export const projects = [
         description:
             "Agenda própria ligada ao Google Agenda da clínica: o paciente vê só os horários livres e marca a avaliação em 1 minuto. Copy dentro das regras do CFO e SEO local.",
         highlights: ["Agenda online", "Google Apps Script", "SEO local"],
-        stack: "HTML · CSS · JavaScript",
         image: "raiz-odontologia",
         url: "https://raizodontologia.vercel.app/",
     },
@@ -42,9 +40,8 @@ export const projects = [
         description:
             "Simulador de economia: a pessoa informa a conta de luz e vê painéis, economia, parcela e retorno. O seletor Casa, Comércio e Indústria adapta textos e valores.",
         highlights: ["Simulador", "Google Sheets", "Pixels Meta e Google"],
-        stack: "HTML · CSS · JavaScript",
         image: "econowatt",
-        url: "https://econowatt.vercel.app/",
+        url: "https://econowattt.vercel.app/",
     },
     {
         id: "raiz-cafe",
@@ -53,7 +50,6 @@ export const projects = [
         description:
             "Loja de café especial com carrinho, frete grátis progressivo e eventos de anúncio liberados só depois do consentimento de cookies.",
         highlights: ["Carrinho", "Google Tag Manager", "LGPD"],
-        stack: "React · Tailwind CSS",
         image: "raiz-cafe",
         url: "https://raizcafe.vercel.app/",
     },
@@ -64,7 +60,6 @@ export const projects = [
         description:
             "Página de vendas com a estrutura completa de copy: dor, benefícios, módulos, depoimentos, oferta com garantia e perguntas frequentes.",
         highlights: ["Copy de vendas", "Animações de rolagem"],
-        stack: "React · Framer Motion",
         image: "digitalpro",
         url: "https://lp-digitalpro.vercel.app/",
     },
