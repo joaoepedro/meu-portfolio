@@ -1,6 +1,6 @@
 // Contato do site: só o WhatsApp (no hero, na vitrine, no contato e no rodapé).
 // Para trocar um link, mude só aqui.
-const whatsappNumero = '5516994142162';
+const whatsappNumero = '5516993005199';
 
 /** Link do WhatsApp com uma mensagem pronta. */
 export const whatsappCom = (mensagem) =>
