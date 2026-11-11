@@ -39,7 +39,6 @@ export default function Projects() {
         id="projetos-titulo"
         numero="01"
         rotulo="Vitrine"
-        texto={`${extenso(publicados.length)} páginas para ${extenso(publicados.length).toLowerCase()} negócios diferentes, cada uma com briefing, copy, identidade visual e integrações próprias.`}
       >
         <Suave>Vitrine de</Suave>{' '}
         <br />
@@ -100,7 +99,6 @@ export default function Projects() {
   );
 }
 
-const extenso = (n) => ['Zero', 'Uma', 'Duas', 'Três', 'Quatro', 'Cinco', 'Seis', 'Sete', 'Oito', 'Nove', 'Dez'][n] ?? String(n);
 
 function ProjectCard({ project, featured = false }) {
   const quero = whatsappCom(

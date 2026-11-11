@@ -132,7 +132,6 @@ export default function Process() {
         id="processo-titulo"
         numero="02"
         rotulo="Como trabalho"
-        texto="Cada etapa gera uma entrega que você vê e aprova. Nada de “confia, vai ficar bom”."
       >
         <Suave>Oito etapas, do briefing</Suave>
         <br className="hidden md:inline" /> ao primeiro <Acento>lead.</Acento>

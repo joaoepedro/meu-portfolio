@@ -10,7 +10,7 @@ Site pessoal de desenvolvedor web freelancer: vitrine de landing pages, processo
 - **01 · Vitrine:** cada projeto numa janela de navegador com o print da página inteira, que rola ao passar o mouse (no celular, rola sozinha). No celular, os projetos ficam num carrossel de deslizar. Botões "Ver no ar" e "Quero uma assim" (WhatsApp com mensagem pronta citando o projeto)
 - **Faixa das tecnologias**, rolando entre duas réguas
 - **02 · Como trabalho:** as oito etapas (briefing, persona, copy, identidade visual, código, integrações, testes, no ar), cada uma com o objeto que entrega. No computador acendem em sequência; no celular, acompanham a rolagem
-- **03 · Serviços:** landing pages, sites institucionais, sistemas web, integrações e automações
+- **03 · O que desenvolvo:** cada serviço responde a um objetivo do cliente ("vender mais com anúncio" → landing page; "ser encontrado no Google" → site para negócio local; "responder todo mundo no WhatsApp" → atendimento com IA; "uma marca com cara profissional" → identidade visual e web design). No celular, a lista abre e fecha
 - **04 · Contato:** WhatsApp
 
 Todas as animações respeitam "reduzir movimento" do sistema.
@@ -43,7 +43,7 @@ O texto fica em `src/data/`:
 |---|---|
 | `projects.js` | projetos da vitrine (o primeiro aparece em destaque) |
 | `process.js` | nomes das oito etapas (os objetos de cada uma ficam em `components/Process.jsx`) |
-| `services.js` | serviços |
+| `services.js` | serviços (objetivo, nome, texto e projetos de exemplo) |
 | `stack.js` | tecnologias da faixa |
 | `links.js` | WhatsApp |
 

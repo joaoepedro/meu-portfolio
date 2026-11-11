@@ -1,4 +1,4 @@
-// Contato do site: só o WhatsApp (no hero, na vitrine, no contato e no rodapé).
+// Contatos do site: WhatsApp (hero, vitrine, contato e rodapé) e Instagram (contato e rodapé).
 // Para trocar um link, mude só aqui.
 const whatsappNumero = '5516993005199';
 
@@ -8,4 +8,6 @@ export const whatsappCom = (mensagem) =>
 
 export const links = {
   whatsapp: whatsappCom('Olá, João! Vi seu portfólio e quero conversar sobre um projeto.'),
+  instagram: 'https://www.instagram.com/odevjp/',
+  instagramArroba: '@odevjp',
 };
