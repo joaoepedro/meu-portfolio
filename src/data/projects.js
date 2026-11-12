@@ -43,24 +43,4 @@ export const projects = [
         image: "econowatt",
         url: "https://econowattt.vercel.app/",
     },
-    {
-        id: "raiz-cafe",
-        name: "Raiz Café",
-        category: "E-commerce · café especial",
-        description:
-            "Loja de café especial com carrinho, frete grátis progressivo e eventos de anúncio liberados só depois do consentimento de cookies.",
-        highlights: ["Carrinho", "Google Tag Manager", "LGPD"],
-        image: "raiz-cafe",
-        url: "https://raizcafe.vercel.app/",
-    },
-    {
-        id: "digitalpro",
-        name: "DigitalPro",
-        category: "Curso de tráfego pago",
-        description:
-            "Página de vendas com a estrutura completa de copy: dor, benefícios, módulos, depoimentos, oferta com garantia e perguntas frequentes.",
-        highlights: ["Copy de vendas", "Animações de rolagem"],
-        image: "digitalpro",
-        url: "https://lp-digitalpro.vercel.app/",
-    },
 ];

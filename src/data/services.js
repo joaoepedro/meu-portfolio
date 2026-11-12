@@ -14,7 +14,7 @@ export const services = [
     titulo: 'Site para negócio local',
     texto:
       'Serviços, horários, mapa, avaliações, WhatsApp e redes num lugar só, feito para aparecer quando alguém da sua cidade procura o que você faz.',
-    exemplos: ['raiz-odontologia', 'raiz-cafe'],
+    exemplos: ['raiz-odontologia'],
   },
   {
     objetivo: 'responder todo mundo no WhatsApp',
