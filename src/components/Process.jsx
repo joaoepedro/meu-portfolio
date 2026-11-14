@@ -4,7 +4,7 @@ import SectionTitle, { Suave, Acento } from './SectionTitle';
 import useCelular from './useCelular';
 
 /*
- * 02 · Como trabalho
+ * 03 · Como trabalho
  * As oito etapas acendem uma por vez (ciclo de 8s): o card sobe, ganha borda
  * laranja e um brilho suave, e o ponto ao lado do número acende.
  * Computador: grade, e as etapas acendem sozinhas em sequência.
@@ -130,7 +130,7 @@ export default function Process() {
     >
       <SectionTitle
         id="processo-titulo"
-        numero="02"
+        numero="03"
         rotulo="Como trabalho"
       >
         <Suave>Oito etapas, do briefing</Suave>

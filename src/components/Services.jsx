@@ -6,7 +6,7 @@ import Reveal from './Reveal';
 import useCelular from './useCelular';
 
 /*
- * 03 · O que desenvolvo — cada serviço responde a um objetivo do cliente.
+ * 02 · O que desenvolvo — cada serviço responde a um objetivo do cliente.
  * Computador: duas colunas, "Você quer…" e "Eu entrego", tudo aberto.
  * Celular: lista que abre e fecha; o primeiro serviço começa aberto.
  */
@@ -53,7 +53,7 @@ export default function Services() {
 
   return (
     <section id="servicos" aria-labelledby="servicos-titulo" className="secao pt-24 md:pt-32 lg:pt-40">
-      <SectionTitle id="servicos-titulo" numero="03" rotulo="Serviços">
+      <SectionTitle id="servicos-titulo" numero="02" rotulo="Serviços">
         <Suave>O que</Suave>{' '}
         <br />
         desenvolvo<Acento>.</Acento>

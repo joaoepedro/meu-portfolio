@@ -10,6 +10,13 @@ export const services = [
     exemplos: ['mimo-doceria', 'econowatt'],
   },
   {
+    objetivo: 'receber pedidos sem comissão de app',
+    titulo: 'Cardápio online',
+    texto:
+      'O cliente monta o pedido no carrinho, paga por Pix ou cartão no próprio site e o pedido chega pronto no seu WhatsApp. Com painel para acompanhar os pedidos e controlar os itens do cardápio.',
+    exemplos: [],
+  },
+  {
     objetivo: 'ser encontrado no Google',
     titulo: 'Site para negócio local',
     texto:
